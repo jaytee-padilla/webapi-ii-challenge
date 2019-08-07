@@ -53,4 +53,50 @@ router.post('/', (req, res) => {
 		});
 });
 
+// DELETE specific post
+router.delete('/:id', (req, res) => {
+	BlogData.findById(req.params.id)
+		.then(post => {
+			if(post.length === 0){
+				return res.status(404).json({message: "The post with the specified ID does not exist"});
+			}
+
+			BlogData.remove(req.params.id)
+				.then(post => {
+					return res.status(202).json({message: "Specified post successfully deleted"});
+				})
+				.catch(error => {
+					return res.status(500).json({error: "The post could not be removed"});
+				});
+		})
+		.catch(error => {
+			return res.status(500).json({error: "The post information could not be retrieved."});
+		});
+});
+
+// PUT (update) specific post
+router.put('/:id', (req, res) => {
+	if(!req.body.title || !req.body.contents) {
+		return res.status(400).json({errorMessage: "Please provide title and contents for the post"});
+	}
+
+	BlogData.findById(req.params.id)
+		.then(post => {
+			if(post.length === 0){
+				return res.status(404).json({message: "The post with the specified ID does not exist"});
+			}
+
+			BlogData.update(req.params.id, req.body)
+				.then(updatedPost => {
+					return res.status(200).json({message: "Specified post successfully updated"});
+				})
+				.catch(error => {
+					return res.status(500).json({errorMessage: "The post information could not be modified"});
+				})
+		})
+		.catch(error => {
+			return res.status(500).json({error: "The post information could not be retrieved."});
+		});
+});
+
 module.exports = router;

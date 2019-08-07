@@ -18,8 +18,8 @@
 	[x] If the information about the post is valid
 	[x] If there's an error while saving the post
 
-[] When the client makes a POST request to /api/posts/:id/comments:
-	[] If the post with the specified id is not found
+[x] When the client makes a POST request to /api/posts/:id/comments:
+	[x] If the post with the specified id is not found
 	[x] If the request body is missing the text property
 	[x] If the information about the comment is valid
 	[x] If there's an error while saving the comment
@@ -27,15 +27,15 @@
 
 
 *** DELETE ***
-[] When the client makes a DELETE request to /api/posts/:id:
-	[] If the post with the specified id is not found
-	[] If there's an error in removing the post from the database
+[x] When the client makes a DELETE request to /api/posts/:id:
+	[x] If the post with the specified id is not found
+	[x] If there's an error in removing the post from the database
 
 
 
 *** PUT ***
-[] When the client makes a PUT request to /api/posts/:id:
-	[] If the post with the specified id is not found
-	[] If the request body is missing the title or contents property
-	[] If there's an error when updating the post
-	[] If the post is found and the new information is valid
+[x] When the client makes a PUT request to /api/posts/:id:
+	[x] If the post with the specified id is not found
+	[x] If the request body is missing the title or contents property
+	[x] If there's an error when updating the post
+	[x] If the post is found and the new information is valid

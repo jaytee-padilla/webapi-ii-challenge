@@ -23,8 +23,10 @@ router.get('/:id/comments', (req, res) => {
 
 router.post('/:id/comments', (req, res) => {
 	let commentText = req.body;
-	commentText.post_id = postId;
 	const postId = req.params.id;
+
+	// add post_id property to req.body object
+	commentText.post_id = postId;
 
 	// if text doesn't exist within request header, return error
 	if(!commentText) {
